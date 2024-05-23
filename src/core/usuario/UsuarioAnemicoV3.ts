@@ -1,16 +1,17 @@
 import Erros from "@/constants/Erros"
+import Validador from "@/utils/Validador"
 
 export default class UsuarioAnemicoV3 {
-  constructor(
-    private id: number,
-    private nome: string,
-    private email: string,
-    private senha?: string
-  ){
+  private id!: number
+  private nome!: string
+  private email!: string
+  private senha?: string
+
+  constructor(id: number, nome: string, email: string, senha?: string) {
     this.setID(id)
     this.setNome(nome)
     this.setEmail(email)
-    if(senha) this.setSenha(senha)
+    if (senha) this.setSenha(senha)
   }
 
   getID(): number {
@@ -34,7 +35,9 @@ export default class UsuarioAnemicoV3 {
   }
 
   setEmail(email: string) {
-    this.email = email
+    if (Validador.isEmailValido(email)) {
+      this.email = email
+    }
   }
 
   getSenha(): string | undefined {
@@ -46,3 +49,5 @@ export default class UsuarioAnemicoV3 {
     this.senha = senha
   }
 }
+
+

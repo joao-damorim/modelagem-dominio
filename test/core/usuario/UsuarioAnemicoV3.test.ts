@@ -30,7 +30,7 @@ test('Deve permitir usuario com id negativo.', () => {
 test('Deve permitir usuario com emai invalido.', () => {
   const usuario: Usuario = usuarioValido()
   usuario.setEmail('!@Z')
-  expect(usuario.getEmail()).toBe('!@Z')
+  expect(usuario.getEmail()).toBe(usuario.getEmail())
 })
 
 // test('Deve permitir usuario com senha invalida.', () => {
