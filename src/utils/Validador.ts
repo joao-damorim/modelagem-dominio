@@ -1,8 +1,9 @@
 export default class Validador {
 
-  // static combinar(): string[] | null {
-
-  // }
+  static combinar(...erros: (string | null)[]): string[] | null {
+    const errosFiltrados = erros.filter(erro => erro !== null) as string[]
+    return errosFiltrados.length > 0 ? errosFiltrados : null
+  }
 
   static naoNulo(valor: any, erro: string): string | null {
     return valor !== null && valor !== undefined ? null : erro

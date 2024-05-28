@@ -43,3 +43,25 @@ test('Deve retornar null com texto menor que o tamanho máximo.', () => {
   const erro = Validador.tamanhoMenorQue('Bom dia', 6, 'erro')
   expect(erro).toBe('erro')
 })
+
+test('Deve combinar os erros.', () => {
+  const erros = Validador.combinar (
+    Validador.naoVazio('', 'erro1'),
+    Validador.naoVazio('Legal', 'erro2'),
+    Validador.naoVazio('', 'erro3'),
+    Validador.naoVazio('', 'erro4'),
+  )
+  // console.log(erros)
+  expect(erros?.join(', ')).toBe('erro1, erro3, erro4')
+})
+
+test('Deve combinar sem erros.', () => {
+  const erros = Validador.combinar (
+    Validador.naoVazio('Legal', 'erro1'),
+    Validador.naoVazio('Legal', 'erro2'),
+    Validador.naoVazio('Legal', 'erro3'),
+    Validador.naoVazio('Legal', 'erro4'),
+  )
+  // console.log(erros)
+  expect(erros).toBeNull()
+})

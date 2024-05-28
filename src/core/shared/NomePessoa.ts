@@ -7,6 +7,8 @@ export default class NomePessoa {
   constructor(nome: string) {
     this.nome = nome.trim()
 
-    Validador.naoVazio(this.nome, Erros.NOME_VAZIO)
+    const erros = Validador.combinar(
+      Validador.naoVazio(this.nome, Erros.NOME_VAZIO)
+    )
   }
 }
