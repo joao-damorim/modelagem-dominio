@@ -15,7 +15,11 @@ export default class Validador {
   }
 
   static tamanhoMenorQue(valor: string | any[], tamanhoMaximo: number, erro: string): string | null {
-    return valor.length <= tamanhoMaximo ? null : erro
+    return valor.length < tamanhoMaximo ? null : erro
+  }
+
+  static tamanhoMaiorQue(valor: string | any[], tamanhoMinimo: number, erro: string): string | null {
+    return valor.length > tamanhoMinimo ? null : erro
   }
 
   static isEmailValido(email: string): boolean {
