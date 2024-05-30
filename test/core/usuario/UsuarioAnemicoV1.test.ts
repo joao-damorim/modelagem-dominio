@@ -7,6 +7,12 @@ const usuarioValido: Usuario = {
   senha: '123456'
 }
 
+test('Deve permitir usuario com nome undefined.', () => {
+  const usuario: Usuario = {...usuarioValido}
+  usuario.nome = undefined as any
+  expect(usuario.nome).toBeUndefined
+})
+
 test('Deve permitir usuario sem nome.', () => {
   const usuario: Usuario = {...usuarioValido, nome: ''}
   expect(usuario.nome).toBe('')

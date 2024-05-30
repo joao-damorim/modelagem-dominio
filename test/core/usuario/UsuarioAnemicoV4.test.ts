@@ -8,7 +8,6 @@ const usuarioValido = () => new Usuario(
   '123456'
 )
   
-
 test('Deve permitir usuario sem nome.', () => {
   const usuario: Usuario = usuarioValido()
   usuario.nome = undefined as any
@@ -27,7 +26,7 @@ test('Deve permitir usuario com id negativo.', () => {
   expect(usuario.id).toBe(-123)
 })
 
-test('Deve permitir usuario com emai invalido.', () => {
+test('Deve permitir usuario com email invalido.', () => {
   const usuario: Usuario = usuarioValido()
   usuario.email = '!@Z'
   expect(usuario.email).toBe(usuario.email)
@@ -45,7 +44,7 @@ test('Deve alterar email com email válido.', () => {
 //   expect(usuario.getSenha()).toBe('a')
 // })
 
-test('Deve lançar erro ao tentar alterar senha com tamanho menor que 6 ccaracteres.', () => {
+test('Deve lançar erro ao tentar alterar senha com tamanho menor que 6 caracteres.', () => {
   const usuario: Usuario = usuarioValido()
   expect(() => usuario.senha = 'a').toThrowError(Erros.SENHA_INVALIDA)
 })

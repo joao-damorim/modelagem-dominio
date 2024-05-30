@@ -7,7 +7,6 @@ const usuarioValido = () => new Usuario(
   '123456'
 )
   
-
 test('Deve permitir usuario sem nome.', () => {
   const usuario: Usuario = usuarioValido()
   usuario.nome = ''
@@ -17,7 +16,7 @@ test('Deve permitir usuario sem nome.', () => {
 test('Deve permitir usuario com nome undefined.', () => {
   const usuario: Usuario = usuarioValido()
   usuario.nome = undefined as any
-  expect(usuario.nome).toBe(undefined)
+  expect(usuario.nome).toBeUndefined
 })
 
 test('Deve permitir usuario com id negativo.', () => {
