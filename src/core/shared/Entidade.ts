@@ -4,7 +4,7 @@ export interface EntidadeProps {
   id?: string
 }
 
-export default abstract class Entidade<Props extends EntidadeProps> {
+export default abstract class Entidade<Tipo, Props extends EntidadeProps> {
   readonly id: Id
   readonly props: Props
 
@@ -13,11 +13,21 @@ export default abstract class Entidade<Props extends EntidadeProps> {
     this.props = {...props, id: this.id.valor}
   }
 
-  igual(outraEntidade: Entidade<Props>): boolean {
+  igual(outraEntidade: Entidade<Tipo, Props>): boolean {
     return this.id.igual(outraEntidade?.id)
   }
   
-  diferente(outraEntidade: Entidade<Props>): boolean {
+  diferente(outraEntidade: Entidade<Tipo, Props>): boolean {
     return this.id.diferente(outraEntidade?.id)
+  }
+
+  clone (props: Props, ...args: any): Tipo {
+    return new (this.constructor as any)(
+      {
+        ...this.props,
+        ...props
+      },
+      ...args
+    )
   }
 }

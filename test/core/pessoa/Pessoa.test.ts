@@ -20,7 +20,7 @@ test('Deve clonar objeto com nome alterado', () => {
   expect(novaPessoa.nome.completo).toBe('Pedro Augusto Pereira')
 })
 
-test('Deve clonar objeto com nome alterado', () => {
+test('Deve clonar objeto com id alterado', () => {
   const pessoa = new Pessoa({nome: 'Pedro Augusto Soares', cpf: '935.619.760-18'})
   const novaPessoa = pessoa.clone({id: Id.novo.valor})
   expect(novaPessoa.id.valor !== pessoa.id.valor).toBe(true)

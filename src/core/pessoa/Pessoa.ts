@@ -6,7 +6,7 @@ export interface PessoaProps extends EntidadeProps {
   nome?: string
   cpf?: string
 }
-export default class Pessoa extends Entidade<PessoaProps> {
+export default class Pessoa extends Entidade<Pessoa, PessoaProps> {
   readonly nome: NomePessoa
   readonly cpf: Cpf
 
@@ -23,10 +23,6 @@ export default class Pessoa extends Entidade<PessoaProps> {
   //     id ?? this.id.valor
   //   )
   // }
-
-  clone (props: PessoaProps) {
-    return new Pessoa({...this.props, ...props})
-  }
 }
 
 
